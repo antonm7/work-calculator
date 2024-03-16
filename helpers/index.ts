@@ -37,8 +37,11 @@ export const checkIfWeekend = (
 
 	const d = new Date(year, month, date);
 
-	if (d.getDay() === 6 || (d.getDay() === 5 && hours.day > 0)) return true;
-	return false;
+	if (d.getDay() === 6) return 'full';
+	if (d.getDay() === 5 && hours.morning > 0 && (hours.day > 0 || hours.night > 0)) return 'half';
+	if (d.getDay() === 5 && hours.morning > 0 && (hours.day === 0 || hours.night === 0)) return 'none';
+
+	return 'none';
 };
 
 export const getDayName = (year: number, month: number, day: number): string => {

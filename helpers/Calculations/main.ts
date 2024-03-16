@@ -6,7 +6,7 @@ class Daily {
 	night: number;
 	date: number;
 	prices: { morning: number; day: number; night: number };
-	isWeekend: boolean;
+	isWeekend: 'full' | 'half' | 'none';
 	weekendValue: number;
 
 	constructor(
@@ -15,7 +15,7 @@ class Daily {
 		day: number,
 		night: number,
 		pricesObject: { morning: number; day: number; night: number },
-		isWeekend: boolean,
+		isWeekend: 'full' | 'half' | 'none',
 		weekendValue = 300
 	) {
 		this.morning = morning;
@@ -32,11 +32,17 @@ class Daily {
 		const rates = [this.prices.morning, this.prices.day, this.prices.night];
 		let totalSalary = 0;
 
-		if (this.isWeekend) {
+		if (this.isWeekend !== 'none') {
 			const multiplier = this.weekendValue / 100;
-			for (let i = 0; i < hours.length; i++) {
-				console.log('dsadsa', hours[i], rates[i], multiplier);
-				totalSalary += hours[i] * rates[i] * multiplier;
+			if (this.isWeekend === 'full') {
+				for (let i = 0; i < hours.length; i++) {
+					totalSalary += hours[i] * rates[i] * multiplier;
+				}
+			} else {
+				totalSalary += hours[0] * rates[0];
+				for (let i = 1; i < hours.length; i++) {
+					totalSalary += hours[i] * rates[i] * multiplier;
+				}
 			}
 		} else {
 			// If it's not a weekend, apply the standard calculation
@@ -74,7 +80,7 @@ export const calculateDailySalary = (
 	day: number,
 	night: number,
 	prices: PricesObject,
-	isWeekend: boolean,
+	isWeekend: 'full' | 'half' | 'none',
 	weekendValue: number
 ) => {
 	const daily = new Daily(date, morning, day, night, prices, isWeekend, weekendValue);
