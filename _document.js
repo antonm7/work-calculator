@@ -7,7 +7,9 @@ class MyDocument extends Document {
 			<Html lang="he" dir="rtl">
 				{' '}
 				{/* Adjust lang attribute as needed */}
-				<Head />
+				<Head>
+					<title>מחשבון שעות</title>
+				</Head>
 				<body>
 					<Main />
 					<NextScript />
