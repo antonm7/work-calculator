@@ -77,33 +77,25 @@ export const ShiftSelector: React.FC<Props> = ({ selected, onSave, currentValues
 				{selected.day}
 			</h1>
 			<button
-				className={`py-2 rounded-xl my-2 hover:bg-gray-300 ${
-					morning ? styles.selectedShift : 'bg-gray-200'
-				}`}
+				className={`py-2 rounded-xl my-2 ${morning ? styles.selectedShift : 'bg-gray-200'}`}
 				onClick={() => handle_select('morning')}
 			>
 				7:00 - 15:00
 			</button>
 			<button
-				className={`py-2 rounded-xl my-2 hover:bg-gray-300 ${
-					day ? styles.selectedShift : 'bg-gray-200'
-				}`}
+				className={`py-2 rounded-xl my-2  ${day ? styles.selectedShift : 'bg-gray-200'}`}
 				onClick={() => handle_select('day')}
 			>
 				15:00 - 23:00
 			</button>
 			<button
-				className={` py-2 rounded-xl my-2 hover:bg-gray-300 ${
-					night ? styles.selectedShift : 'bg-gray-200'
-				}`}
+				className={` py-2 rounded-xl my-2  ${night ? styles.selectedShift : 'bg-gray-200'}`}
 				onClick={() => handle_select('night')}
 			>
 				23:00 - 7:00
 			</button>
 			<button
-				className={` py-2 rounded-xl my-2 hover:bg-gray-300  my-2  ${
-					halfNight ? styles.selectedShift : 'bg-gray-200'
-				}`}
+				className={` py-2 rounded-xl my-2 ${halfNight ? styles.selectedShift : 'bg-gray-200'}`}
 				onClick={() => handle_select('halfNight')}
 			>
 				23:00 - 3:00
